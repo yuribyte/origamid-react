@@ -103,3 +103,9 @@ hr {
   border: 2px solid black;
   margin: 2rem auto;
 }
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  max-width: 500px;
+}

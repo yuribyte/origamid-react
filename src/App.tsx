@@ -1,31 +1,29 @@
-import { useState } from 'react';
+import useLocalStorage from './customHooks/useLocalStorage';
 
-export default function App() {
-  const [items, setItems] = useState<string[]>(['item1', 'item2', 'item3']);
+const App = () => {
+  const [data, setData] = useLocalStorage('data', null);
 
-  const createItem = () => {
-    setItems([...items, 'item4']);
+  const handleClick = async (event: {
+    target: HTMLInputElement | EventTarget;
+  }) => {
+    const value = (event.target as HTMLTextAreaElement).innerText;
+    setData(value);
   };
 
-  const removeItem = () => {
-    items.pop();
-    setItems([...items]);
-  };
+  function clearData() {
+    setData(null);
+  }
 
-  const showItems = () => {
-    return items.map((item, index) => {
-      return <span key={index}>{item}</span>;
-    });
-  };
+  const renderData = <span>{data ? data : ''}</span>;
 
   return (
     <div>
-      <h1>Hello World!</h1>
-      <p>
-        <button onClick={createItem}>New item</button>
-        <button onClick={removeItem}>remove item</button>
-      </p>
-      <p>{showItems()}</p>
+      <button onClick={handleClick}>notebok</button>
+      <button onClick={handleClick}>asddsadasdsa</button>
+      <button onClick={clearData}>clear</button>
+      <h2>Current data: {renderData}</h2>
     </div>
   );
-}
+};
+
+export default App;

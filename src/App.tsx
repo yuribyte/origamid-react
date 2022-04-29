@@ -1,7 +1,7 @@
-import Form1 from './forms/form1';
+import Form2 from './forms/form2';
 
 const App = () => {
-  return <Form1 />;
+  return <Form2 />;
 };
 
 export default App;
